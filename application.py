@@ -104,7 +104,7 @@ def main_menu(panthers, bandits, warriors):
         try:
             user_choice = input("Please make a selection: ").strip()
             if user_choice.lower() == 'q':
-                print("\nGoodbye!")
+                print("\nGoodbye!\n")
                 sys.exit()
             elif int(user_choice) == 1:
                 display_team_details("Panthers", panthers)
