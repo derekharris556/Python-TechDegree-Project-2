@@ -69,7 +69,7 @@ def display_team_details(team_name, team_roster):
     num_players = len(team_roster)
     # Print total number of players
     print(f'# of Players: {num_players}\n')
-    # Calculate total number of experienced players and assign to num_experienced
+    # Calculate total num of experienced players and assign to num_experienced
     num_experienced = sum(player['experience'] for player in team_roster)
     # Print total number of experienced players for given team
     print(f'# of Experienced Players: {num_experienced}\n')
