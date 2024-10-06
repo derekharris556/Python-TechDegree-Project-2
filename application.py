@@ -43,8 +43,14 @@ def balance_teams(experienced_players, inexperienced_players):
     team_names = ["Panthers", "Bandits", "Warriors"]
     # Alternating assignment of experienced players using dictionary comprehension
     team_rosters = {team: [] for team in team_names}
-    team_rosters = {team: [experienced_players[i] for i in range(len(experienced_players)) if i % len(team_names) == idx]
-                    for idx, team in enumerate(team_names)}
+    team_rosters = {
+        team: [
+            experienced_players[i] 
+            for i in range(len(experienced_players))
+            if i % len(team_names) == idx
+            ]
+            for idx, team in enumerate(team_names)
+            }
     # Alternating assignment of inexperienced players
     for idx, player in enumerate(inexperienced_players):
         team_name = team_names[idx % len(teams)]
@@ -71,7 +77,7 @@ def display_team_details(team_name, team_roster):
     num_inexperienced = sum(not player['experience'] for player in team_roster)
     # Print total number of inexperienced players for given team
     print(f'# of Experience Players: {num_inexperienced}\n')
-    # Calculate average height and assign to avg_height (sum of player heights divided by # of players)
+    # Avg height of all players (sum of player heights divided by # of players)
     avg_height = round(sum(player['height'] for player in team_roster) / num_players, 2)
     # Print average height for given team
     print(f'Average Height: {avg_height} inches\n')
@@ -125,7 +131,7 @@ def return_to_main_menu():
         if return_to_main_menu == "":
             return True
         else:
-            print("Invalid input. Press ENTER to return to main menu.")
+            print('Invalid input. Press ENTER to return to main menu.')
 
 
 def main():
@@ -135,14 +141,13 @@ def main():
     experienced, inexperienced = sort_players_by_experience(cleaned_players)
     # Balance the teams and capture the results
     panthers, bandits, warriors = balance_teams(experienced, inexperienced)
-    
-    # Call main_menu function and set up a loop to keep the program running until user chooses to quit. 
+    # Call main_menu func & set sa loop so program runs until user quits
     while True:
         main_menu(panthers, bandits, warriors)
-    
+
+
 
 
 # main function called within dunder main
 if __name__ == "__main__":
     main()
-    
