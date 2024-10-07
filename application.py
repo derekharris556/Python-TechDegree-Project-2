@@ -40,7 +40,8 @@ def balance_teams(experienced_players, inexperienced_players):
     team_rosters = {team: [] for team in team_names}
     # Alternating assignment of experienced players
     team_rosters = {
-        team: [experienced_players[i] 
+        team: [
+            experienced_players[i] 
             for i in range(len(experienced_players))
             if i % len(team_names) == idx
             ]
