@@ -35,17 +35,12 @@ def sort_players_by_experience(cleaned_players):
 
 # Assign experienced & inexperienced players equally to 3 teams
 def balance_teams(experienced_players, inexperienced_players):
-    teams = copy.deepcopy(constants.TEAMS)
-    # Calculate players per team
-    experienced_per_team = len(experienced_players) // len(teams)
-    inexperienced_per_team = len(inexperienced_players) // len(teams)
-    # Initialize team names
-    team_names = ["Panthers", "Bandits", "Warriors"]
-    # Alternating assignment of experienced players using dictionary comprehension
+    # Create a deepcopy of team names from constants
+    team_names = copy.deepcopy(constants.TEAMS)
     team_rosters = {team: [] for team in team_names}
+    # Alternating assignment of experienced players
     team_rosters = {
-        team: [
-            experienced_players[i] 
+        team: [experienced_players[i] 
             for i in range(len(experienced_players))
             if i % len(team_names) == idx
             ]
@@ -53,7 +48,7 @@ def balance_teams(experienced_players, inexperienced_players):
             }
     # Alternating assignment of inexperienced players
     for idx, player in enumerate(inexperienced_players):
-        team_name = team_names[idx % len(teams)]
+        team_name = team_names[idx % len(team_names)]
         team_rosters[team_name].append(player)
 
     return team_rosters["Panthers"], team_rosters["Bandits"], team_rosters["Warriors"]
@@ -126,9 +121,9 @@ def main_menu(panthers, bandits, warriors):
 def return_to_main_menu():
     print('\nPress ENTER to return to main menu.')
     while True:
-        return_to_main_menu = input("").strip()
+        user_choice = input("").strip()
         # If user presses ENTER, func returns TRUE and returns to main menu
-        if return_to_main_menu == "":
+        if user_choice == "":
             return True
         else:
             print('Invalid input. Press ENTER to return to main menu.')
